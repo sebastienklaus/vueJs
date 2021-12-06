@@ -6,16 +6,30 @@
   <title>Vue JS</title>
  </head>
  <body>
-  
-	<div id="app">
-		<ul>
-			<li v-for="nom in noms">
-				{{nom}}
-			</li>
-		</ul>
+	 <div id="app">
+		<div :class="classeCss">Un peu de texte rouge</div>
 
-		<input type="text" placeholder="Entrer le nouveau nom ici" v-model="nouveauNom">
-		<button v-on:click="ajouterNom">Ajouter</button>
+		<button v-bind:title="title">Ajouter</button>
+		<!-- ou :title -->
+
+		<div :class="{'ok':produitCommandeOk}">Tige de selle Shimano</div>
+		<button v-on:click="commanderProduit">Commander</button>
+
+
+		<div>
+			<button :disabled="boutonInactif" @click="disableButton">Ce bouton est inactif</button>
+		</div>
+
+		<p>Voici un message : {{message}}</p>
+		<p>Voici le même message en majuscules : {{leMessageEnMajuscules}}</p>
+		<p>et là aussi : {{leMessageEnMajuscules}}</p>
+
+		<input v-model="nombre">
+		<p>Un nombre : {{nombre}}</p>
+		<p>Ce nombre au carre : {{carreDuNombre}}</p>
+		<p>Ce nombre au carre : {{carreDuNombre}}</p>
+		<p>Ce nombre au carre : {{carreDuNombre}}</p>
+		<p>Ce nombre au carre : {{carreDuNombre}}</p>
 		
 	</div>
 	<script>
@@ -23,22 +37,42 @@
 		el :'#app',
 		nouveauNom : '',
 		data : {
-			noms : [
-				'John',
-				'Paul',
-				'Georges',
-				'Ringo'
-			]
+			title : 'Vous me voyez !',
+			classeCss : "texte-rouge",
+			produitCommandeOk : false,
+			boutonInactif : false,
+			message : 'Bonjour tout le monde',
+			nombre : 5
 		},
 		methods : { 
-			ajouterNom(){
-				this.noms.push(this.nouveauNom);
-				this.nouveauNom = "";
+			commanderProduit(){
+				this.produitCommandeOk=true;
+			},
+			disableButton(){
+				this.boutonInactif=true
+			}
+		},
+		computed : {
+			leMessageEnMajuscules(){
+				console.log('leMessageEnMajuscules');
+				return this.message.toUpperCase();
+			},
+			carreDuNombre(){
+				console.log('carreDuNombre');
+				return this.nombre * this.nombre;
 			}
 		}
 	});
 
 	</script>
+	<style>
+		.texte-rouge{
+			color : red;
+		}
+		.ok{
+			color : green;
+		}
+	</style>
 
  </body>
 </html>
