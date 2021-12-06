@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Vue JS</title>
+ </head>
+ <body>
+  
+	<div id="app">
+		<ul>
+			<li v-for="nom in noms">
+				{{nom}}
+			</li>
+		</ul>
+
+		<input type="text" placeholder="Entrer le nouveau nom ici" v-model="nouveauNom">
+		<button v-on:click="ajouterNom">Ajouter</button>
+		
+	</div>
+	<script>
+	var app = new Vue({
+		el :'#app',
+		nouveauNom : '',
+		data : {
+			noms : [
+				'John',
+				'Paul',
+				'Georges',
+				'Ringo'
+			]
+		},
+		methods : {
+			ajouterNom(){
+				this.noms.push(this.nouveauNom);
+				this.nouveauNom = "";
+			}
+		}
+	});
+
+	</script>
+
+ </body>
+</html>
