@@ -12,21 +12,35 @@
         <button id="next-page">Next</button>
         <div id="wrapper">
             <div id="products">
-                
                 <!-- afficher ici la liste de tous les produits disponibles -->
+				<!-- template for product -->
+                <template v-for="unProduit in listeProduits">
+					<div class='product'>
+						<h2>{{unProduit.nom}}</h2>
+						<img :src='unProduit.photo'>
+						<p>{{unProduit.prix}}</p>
+						<p>{{unProduit.description}}</p>
+						<button class="add-button" @click="ajouterAuPanier(unProduit.id)">Ajouter au panier</button>
+						</div>
+				</template>
 
             </div>
             <div id="panier">
                 <h2>Votre panier</h2>
                 <div id="panier-content">
-                    
                     <!-- afficher ici la liste des produits qui ont été ajoutés dans le panier -->
-
+                    <template v-for="lignePanier in contenuPanier">
+                        <section class='ligneProduit' :data-id="lignePanier.id">
+                            <p>Nom : {{lignePanier.nom}} Qte : {{lignePanier.qte}}</p>
+                            <p>Prix : {{lignePanier.prix}}</p>
+                            <button @click="removeElementPanier(lignePanier.id)">Remove</button>
+                            </section>
+                    </template>
                 </div>
                 <div id="panier-total">
                 </div>
                 <div id="panier-actions">
-                    <button id="empty">Vider le panier</button>
+                    <button @click="viderPanier">Vider le panier</button>
                     <button id="buy">Commander</button>
                 </div>
             </div>
