@@ -3,46 +3,43 @@
  <head>
   <meta charset="UTF-8">
   <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="./styles.css">
   <title>Vue JS</title>
  </head>
  <body>
 	 <div id="app">
-		
-		<div id="exercice1">
-			<h1>Exercice 1</h1>
-			<img :src="vuejs" width="50%" @click="displayAlert"/>
-		</div>
+		<button id="prev-page">Preview</button>
+        <button id="next-page">Next</button>
+        <div id="wrapper">
+            <div id="products">
+                
+                <!-- afficher ici la liste de tous les produits disponibles -->
 
-		<div id="exercice2">
-			<h1>Exercice 2</h1>
-			<span><button @click="compteurClick">Cliquez-ici !</button>Ce bouton à étét cliqué {{compteur}} fois</span>
-		</div>
+            </div>
+            <div id="panier">
+                <h2>Votre panier</h2>
+                <div id="panier-content">
+                    
+                    <!-- afficher ici la liste des produits qui ont été ajoutés dans le panier -->
 
-		<h1>Exercice 3</h1>
-		<template id="exercice3" v-for="index in nbCarre">
-			<div class="bluesquare" @click="removeSquare"></div>
-		</template>
-		<!-- template = tag "fantome" -->
-
+                </div>
+                <div id="panier-total">
+                </div>
+                <div id="panier-actions">
+                    <button id="empty">Vider le panier</button>
+                    <button id="buy">Commander</button>
+                </div>
+            </div>
+        </div>
 	</div>
 	<script>
 		var app = new Vue({
 			el :'#app',
 			data : {
-				vuejs : "https://i1.wp.com/actisapro.com/wp-content/uploads/2020/01/2018.04_05-vueJS.jpg?ssl=1",
-				compteur : 0,
-				nbCarre : 10
+				
 			},
 			methods : { 
-				displayAlert(){
-					alert('Bonjour');
-				},
-				compteurClick(){
-					this.compteur++;
-				},
-				removeSquare(){
-					this.nbCarre--;
-				}
+				
 			},
 			computed : {
 				
@@ -50,14 +47,5 @@
 		});
 
 	</script>
-	<style>
-		.bluesquare{
-			display: block;
-			width: 60px;
-			height: 60px;
-			background-color: cadetblue;
-			margin: 10px;
-		}
-	</style>
  </body>
 </html>
