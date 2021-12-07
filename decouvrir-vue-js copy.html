@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Vue JS</title>
+ </head>
+ <body>
+	 <div id="app">
+		 <div>
+			<button @click="affichageLapin">Afficher / masquer l'image</button>
+			<img v-if="displayLapin" :src="lapin" width="80%">
+			<button @click="affichageChien">Afficher / masquer l'image</button>
+			<img v-show="displayChien" :src="chien" width="80%">
+			<!-- pour enlever, v-if		pour cacher, v-show -->
+		 </div>
+
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data : {
+				displayLapin : true,
+				lapin : "https://www.cliniqueveterinairesaintjust.com/wp-content/uploads/2019/04/lapin-veterinaire-item-600x400.jpg",
+				displayChien : true,
+				chien : "https://resize.prod.femina.ladmedia.fr/r/,550/img/var/2021-04/golden-retriever.jpg",
+			},
+			methods : {
+				affichageLapin(){
+					this.displayLapin = !this.displayLapin
+				},
+				affichageChien(){
+					this.displayChien = !this.displayChien
+				},
+			}
+		});
+
+	</script>
+	<style>
+		.texte-rouge{
+			color : red;
+		}
+		.ok{
+			color : green;
+		}
+	</style>
+
+ </body>
+</html>

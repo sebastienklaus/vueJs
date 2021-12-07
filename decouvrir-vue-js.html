@@ -33,20 +33,22 @@
 		
 		<!-- si attribut à 2 points, sa valaur doit être une variable -->
 		<liste-contacts :contacts="contactsList"></liste-contacts>
-
+		
 		<liste-contacts :contacts="contactsFr" titre="Contacts francais"></liste-contacts>
-
+		
+		<!-- Essai avec un seul contact sortit de la data contactsList -->
+		<composant-contact :contact="contactMicrosoft">
 
 	</div>
 	<script>
-
+		//Dans la template, un seul élément parent !
 		//Composant liste des contacts
 		Vue.component('liste-contacts',{
 			props : ['contacts', 'titre'],
 			template : `
 			<div>
-			<h1 v-if="titre">{{titre}}</h1>
-			<h1 v-else>Contacts</h1>
+				<h1 v-if="titre">{{titre}}</h1>
+				<h1 v-else>Contacts</h1>
 				<ul> 
 					<li v-for="contact in contacts">
 					<composant-contact :contact="contact"/>
@@ -79,6 +81,11 @@
 				boutonInactif : false,
 				message : 'Bonjour tout le monde',
 				nombre : 5,
+				contactMicrosoft : {
+					name : 'Microsoft',
+					email : 'contact@microsoft.com'
+					
+				},
 				contactsList : [
 					{
 						name : 'Google',
