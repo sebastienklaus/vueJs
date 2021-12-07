@@ -31,38 +31,98 @@
 		<p>Ce nombre au carre : {{carreDuNombre}}</p>
 		<p>Ce nombre au carre : {{carreDuNombre}}</p>
 		
+		<!-- si attribut à 2 points, sa valaur doit être une variable -->
+		<liste-contacts :contacts="contactsList"></liste-contacts>
+
+		<liste-contacts :contacts="contactsFr" titre="Contacts francais"></liste-contacts>
+
+
 	</div>
 	<script>
-	var app = new Vue({
-		el :'#app',
-		nouveauNom : '',
-		data : {
-			title : 'Vous me voyez !',
-			classeCss : "texte-rouge",
-			produitCommandeOk : false,
-			boutonInactif : false,
-			message : 'Bonjour tout le monde',
-			nombre : 5
-		},
-		methods : { 
-			commanderProduit(){
-				this.produitCommandeOk=true;
+
+		//Composant liste des contacts
+		Vue.component('liste-contacts',{
+			props : ['contacts', 'titre'],
+			template : `
+			<div>
+			<h1 v-if="titre">{{titre}}</h1>
+			<h1 v-else>Contacts</h1>
+				<ul> 
+					<li v-for="contact in contacts">
+					<composant-contact :contact="contact"/>
+					</li>
+				</ul>
+			</div>
+			`
+		});
+
+		//Composant 'contact'
+		//props = tu vas recevoir une donnée qui s'appelle contact
+		Vue.component('composant-contact',{
+			props : ['contact'],
+			template : `
+			<div class="contact">
+				<b>{{contact.name}}</b>
+				<p>Email : <a href="">{{contact.email}}</a></p>
+			</div>
+			`
+		});
+
+
+		var app = new Vue({
+			el :'#app',
+			nouveauNom : '',
+			data : {
+				title : 'Vous me voyez !',
+				classeCss : "texte-rouge",
+				produitCommandeOk : false,
+				boutonInactif : false,
+				message : 'Bonjour tout le monde',
+				nombre : 5,
+				contactsList : [
+					{
+						name : 'Google',
+						email : 'contact@google.com'
+					},
+					{
+						name : 'Amazon',
+						email : 'contact@amazon.com'
+					},
+					{
+						name : 'Apple',
+						email : 'contact@apple.fr'
+					},
+					{
+						name : 'Twitter',
+						email : 'contact@twitter.fr'
+					}
+					
+				]
 			},
-			disableButton(){
-				this.boutonInactif=true
-			}
-		},
-		computed : {
-			leMessageEnMajuscules(){
-				console.log('leMessageEnMajuscules');
-				return this.message.toUpperCase();
+			methods : { 
+				commanderProduit(){
+					this.produitCommandeOk=true;
+				},
+				disableButton(){
+					this.boutonInactif=true
+				}
 			},
-			carreDuNombre(){
-				console.log('carreDuNombre');
-				return this.nombre * this.nombre;
+			computed : {
+				leMessageEnMajuscules(){
+					console.log('leMessageEnMajuscules');
+					return this.message.toUpperCase();
+				},
+				carreDuNombre(){
+					console.log('carreDuNombre');
+					return this.nombre * this.nombre;
+				},
+				contactsFr(){
+					return this.contactsList.filter(element => {
+						return element.email.includes('.fr');
+					})
+				}
 			}
-		}
-	});
+		});
 
 	</script>
 	<style>
