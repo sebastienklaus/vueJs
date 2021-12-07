@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Vue JS</title>
+ </head>
+ <body>
+	 <div id="app">
+		
+		<div id="exercice1">
+			<h1>Exercice 1</h1>
+			<img :src="vuejs" width="50%" @click="displayAlert"/>
+		</div>
+
+		<div id="exercice2">
+			<h1>Exercice 2</h1>
+			<span><button @click="compteurClick">Cliquez-ici !</button>Ce bouton à étét cliqué {{compteur}} fois</span>
+		</div>
+
+		<h1>Exercice 3</h1>
+		<template id="exercice3" v-for="index in nbCarre">
+			<div class="bluesquare" @click="removeSquare"></div>
+		</template>
+		<!-- template = tag "fantome" -->
+
+	</div>
+	<script>
+		var app = new Vue({
+			el :'#app',
+			data : {
+				vuejs : "https://i1.wp.com/actisapro.com/wp-content/uploads/2020/01/2018.04_05-vueJS.jpg?ssl=1",
+				compteur : 0,
+				nbCarre : 10
+			},
+			methods : { 
+				displayAlert(){
+					alert('Bonjour');
+				},
+				compteurClick(){
+					this.compteur++;
+				},
+				removeSquare(){
+					this.nbCarre--;
+				}
+			},
+			computed : {
+				
+			}
+		});
+
+	</script>
+	<style>
+		.bluesquare{
+			display: block;
+			width: 60px;
+			height: 60px;
+			background-color: cadetblue;
+			margin: 10px;
+		}
+	</style>
+ </body>
+</html>
