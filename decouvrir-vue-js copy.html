@@ -10,6 +10,9 @@
 		 <div>
 			<button @click="affichageLapin">Afficher / masquer l'image</button>
 			<img v-if="displayLapin" :src="lapin" width="80%">
+			<template v-else>Le lapin est caché</template>
+			<br>
+
 			<button @click="affichageChien">Afficher / masquer l'image</button>
 			<img v-show="displayChien" :src="chien" width="80%">
 			<!-- pour enlever, v-if		pour cacher, v-show -->
@@ -36,14 +39,5 @@
 		});
 
 	</script>
-	<style>
-		.texte-rouge{
-			color : red;
-		}
-		.ok{
-			color : green;
-		}
-	</style>
-
  </body>
 </html>
