@@ -1,0 +1,32 @@
+body{
+    font-family: Helvetica;
+    font-weight: 200;
+}
+#wrapper{
+    display: flex;
+    padding: 1em;
+}
+
+#products{
+    width: 70%;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.product{
+    flex-basis: 20%;
+    border : 3px solid #000;
+    border-radius: 5px;
+    margin : 0.5em;
+}
+
+.product img{
+    max-width: 50%;
+}
+
+.ligneProduit{
+    border-bottom: 2px solid #000;
+    margin : 1em 0
+}
