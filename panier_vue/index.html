@@ -30,7 +30,7 @@
                 <div id="panier-content">
                     <!-- afficher ici la liste des produits qui ont été ajoutés dans le panier -->
                     <template v-for="lignePanier in contenuPanier">
-                        <section class='ligneProduit' :data-id="lignePanier.id">
+                        <section class='ligneProduit' :data-id="lignePanier.id" :class="{'ok': lignePanier.ok}">
                             <p>Nom : {{lignePanier.nom}} Qte : {{lignePanier.qte}}</p>
                             <p>Prix : {{lignePanier.prix}}</p>
                             <button @click="removeElementPanier(lignePanier.id)">Remove</button>
@@ -41,7 +41,7 @@
                 </div>
                 <div id="panier-actions">
                     <button @click="viderPanier">Vider le panier</button>
-                    <button id="buy">Commander</button>
+                    <button @click="commander" id="buy">Commander</button>
                 </div>
             </div>
         </div>

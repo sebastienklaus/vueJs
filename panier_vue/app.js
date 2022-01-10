@@ -5,14 +5,29 @@ const API = 'https://tools.sopress.net/iut/panier/api/';
 var app = new Vue({
     el :'#app',
     created(){
+        //exécute quand l'instance de Vue est prête
         console.log('vue js');
 
         this.chargerProduits();
         this.chargerPanier();
 
+    },
+    watch : {
+        field(){
+            this.chargerProduits();
+        },
+        sort(){
+            this.chargerProduits();
+        },
+        page(){
+            this.chargerProduits();
+        }
 
     },
     data : {
+        field: "nom",
+        page: 1,
+        sort: 'asc',
         listeProduits : [],
         contenuPanier : [],
 
@@ -22,7 +37,6 @@ var app = new Vue({
             fetch(`${API}/products?token=${TOKEN}`).then( (response) => {
                 return response.json();
               }).then((data) => {
-                //panier.modules.actions.construireListeProduits(produits);
                 this.listeProduits = data;
                 });
         },
@@ -53,7 +67,28 @@ var app = new Vue({
             this.contenuPanier = [];
         },
         commander(){
+            let compteur = 0;
+            this.contenuPanier.forEach(lignePanier => {
+                fetch(`${API}/cart/${lignePanier.id}/buy?token=${TOKEN}`,{method: "PUT"}).then(function (response) {
+                    return response.json();
+                  }).then( (data) => {
+                      if(data.success){
+                          lignePanier.ok = true;
+                          compteur++;
+                      }
+                      else{
+                          el = lignePanier.id;
+                          console.log(`The product ${lignePanier.id} is not order`);
+                      }
 
+                      if(compteur == this.contenuPanier.length){
+                          setTimeout(() => {
+                              console.log('toutes');
+                          }, 1000);
+                      }
+                  })
+            });
+            
         }
 
         
