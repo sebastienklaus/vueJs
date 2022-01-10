@@ -13,6 +13,8 @@ var app = new Vue({
 
     },
     watch : {
+        //lorsque la data correspondant au nom de la méthode change de valeur,
+        //ça va charger la méthode chargerProduits
         field(){
             this.chargerProduits();
         },
