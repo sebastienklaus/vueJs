@@ -1,0 +1,3 @@
+[submodule "my_app"]
+	path = my_app
+	url = git@github.com:sebastienklaus/vueJs.git
