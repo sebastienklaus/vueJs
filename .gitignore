@@ -1,6 +1,9 @@
-.DS_Store
-seance3/my_app/node_modules
-seance3/my_app/dist
+# my_app
+
+
+# .DS_Store
+# seance3/my_app/node_modules
+# seance3/my_app/dist
 
 
 # local env files
@@ -21,3 +24,26 @@ seance3/my_app/*.ntvs*
 seance3/my_app/*.njsproj
 seance3/my_app/*.sln
 seance3/my_app/*.sw?
+
+
+
+#maison
+
+# local env files
+seance3/maison/.env.local
+seance3/maison/.env.*.local
+
+# Log files
+seance3/maison/npm-debug.log*
+seance3/maison/yarn-debug.log*
+seance3/maison/yarn-error.log*
+seance3/maison/pnpm-debug.log*
+
+# Editor directories and files
+seance3/maison/.idea
+seance3/maison/.vscode
+seance3/maison/*.suo
+seance3/maison/*.ntvs*
+seance3/maison/*.njsproj
+seance3/maison/*.sln
+seance3/maison/*.sw?
