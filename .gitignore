@@ -1,0 +1,23 @@
+.DS_Store
+seance3/my_app/node_modules
+seance3/my_app/dist
+
+
+# local env files
+seance3/my_app/.env.local
+seance3/my_app/.env.*.local
+
+# Log files
+seance3/my_app/npm-debug.log*
+seance3/my_app/yarn-debug.log*
+seance3/my_app/yarn-error.log*
+seance3/my_app/pnpm-debug.log*
+
+# Editor directories and files
+seance3/my_app/.idea
+seance3/my_app/.vscode
+seance3/my_app/*.suo
+seance3/my_app/*.ntvs*
+seance3/my_app/*.njsproj
+seance3/my_app/*.sln
+seance3/my_app/*.sw?
