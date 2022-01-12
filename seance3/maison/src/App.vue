@@ -28,4 +28,12 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.salon{
+  background-color: #000;
+}
+
+.lumiere-allumee{
+  background-color: #fff;
+}
 </style>
